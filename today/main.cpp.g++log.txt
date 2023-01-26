@@ -1,0 +1,13 @@
+C:\Users\Kids\Desktop\Новая папка (4)\today\main.cpp: In function 'int main()':
+C:\Users\Kids\Desktop\Новая папка (4)\today\main.cpp:17:17: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]
+         X_mouse = txMouseX();
+                 ^
+C:\Users\Kids\Desktop\Новая папка (4)\today\main.cpp:18:17: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]
+         Y_mouse = txMouseY();
+                 ^
+C:\Users\Kids\Desktop\Новая папка (4)\today\main.cpp:7:9: warning: unused variable 'i' [-Wunused-variable]
+     int i = 0;
+         ^
+---------------------------------------------------------------------------------------------
+[26.01.2023 10:35:51,66 C:\Users\Kids@PC-328-01, returned 0]
+C:\Users\Kids\Desktop\Новая папка (4)\today>g++.exe "C:\Users\Kids\Desktop\Новая папка (4)\today\main.cpp" -o bin\Debug\today.exe -mwindows  -Wall -fexceptions  -g  -Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wundef -Wfloat-equal -Winline -Wunreachable-code -Wmissing-declarations -Wmissing-include-dirs -Wswitch-enum -Wswitch-default -Weffc++ -Wmain -Wextra -Wall -g -pipe -fexceptions -Wcast-qual -Wconversion -Wctor-dtor-privacy -Wempty-body -Wformat-security -Wformat=2 -Wignored-qualifiers -Wlogical-op -Wmissing-field-initializers -Wnon-virtual-dtor -Woverloaded-virtual -Wpointer-arith -Wsign-promo -Wstack-usage=8192 -Wstrict-aliasing -Wstrict-null-sentinel -Wtype-limits -Wwrite-strings -D_DEBUG -D_EJUDGE_CLIENT_SIDE -D_EJC
