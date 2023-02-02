@@ -9,6 +9,7 @@ int p = 0;
 std::string a = "";
 HDC  menu = txLoadImage ("menu.bmp");
 HDC  login = txLoadImage ("login.bmp");
+HDC  ball = txLoadImage ("ball.bmp");
 
 std::string line;
 
@@ -30,9 +31,24 @@ struct play
 
 
 
-void ball()
+void boll()
 {
+    txBitBlt (txDC(), 0, 0, 800, 600, ball);
+    std::string prog1;
+    std::ifstream in("morning.txt"); // окрываем файл для чтения
+    while(true)
+    {
+        if (in.is_open())
+        {
+            while (getline(in, prog1))
+            {
+                cout << prog1 << std::endl;
+            }
+        }
 
+       //txTextOut (100, 100, prog1);
+
+    }
 
 
 }
@@ -47,12 +63,21 @@ int main()
     txCreateWindow(800, 600);
 
 
+
     std::ofstream out;          // поток для записи
     out.open("parol.txt");
 
     if (out.is_open())
     {
-        out << "QWE" << std::endl;
+        out << "FAS" << std::endl;
+    }
+
+    std::ofstream morning1;          // поток для записи
+    out.open("morning.txt");
+
+    if (out.is_open())
+    {
+        out << "Почистить зубы" << std::endl;
     }
 
     txDisableAutoPause();
@@ -68,12 +93,13 @@ int main()
 
         if(X_mouse > 100 and X_mouse < 325 and Y_mouse > 214 and Y_mouse < 269 and txMouseButtons() == 1)
         {
-
-
+            a = "";
+            p = 0;
             txBitBlt (txDC(), 0, 0, 800, 600, login);
 
             while(p==0)
             {
+
 
 
                 if(GetAsyncKeyState('A'))
@@ -152,17 +178,17 @@ int main()
                     {
                         if (line == a)
                         {
-                            p==1;
+                            p=1;
 
                         }
-                        std::cout << a << std::endl;
+                        cout << a << std::endl;
                     }
                 }
                 in.close();
                 txSleep(500);
 
              }
-         ball();
+         boll();
          }
     }
 
@@ -173,6 +199,7 @@ int main()
 
     txDeleteDC (menu);
     txDeleteDC (login);
+    txDeleteDC (ball);
 
 
 

@@ -114,3 +114,115 @@ Run file:	C:\Users\Kids\Desktop\Новая папка (4)\today\bin\Debug\today.exe
 Directory:	C:\Users\Kids\Desktop\Новая папка (4)\today
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Kids\Desktop\Новая папка (4)\today\bin\Debug\today.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75BDAB8D в функции ungetwc(). Попытка записать данные по адресу 0x004CB7E5 в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x0050531C (32-bit), Flags: CMdRe0, Thread: 0x2BCC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75BDAB8D in C:\WINDOWS\System32\msvcrt.dll: ungetwc()
+# 1 0x75BDB04D in C:\WINDOWS\System32\msvcrt.dll: ungetwc()
+# 2 0x75BD525D in C:\WINDOWS\System32\msvcrt.dll: sprintf()
+
+# 3 0x0042BDC0 in C:\Users\Kids\Desktop\Новая папка (4)\today\bin\Debug\today.exe: main() at C:/Users/Kids/Desktop/Новая папка (4)/today/main.cpp (64):
+
+     62:   //  play player = {0, 0, };
+     63:     txCreateWindow(800, 600);
+=>   64:     sprintf ("Motivatop_help", txGetModuleFileName (false));
+     65: 
+     66: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Kids\Desktop\Новая папка (4)\today\main.cpp (64):
+
+     62:   //  play player = {0, 0, };
+     63:     txCreateWindow(800, 600);
+=>   64:     sprintf ("Motivatop_help", txGetModuleFileName (false));
+     65: 
+     66: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codelblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Feb  2 2023 10:15:53, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 02 2023 10:15:57
+
+Run file:	C:\Users\Kids\Desktop\Новая папка (4)\today\bin\Debug\today.exe
+Directory:	C:\Users\Kids\Desktop\Новая папка (4)\today
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Kids\Desktop\Новая папка (4)\today\bin\Debug\today.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75BDAB8D в функции ungetwc(). Попытка записать данные по адресу 0x004CB7E5 в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x0050531C (32-bit), Flags: CMdRe0, Thread: 0x2BCC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75BDAB8D in C:\WINDOWS\System32\msvcrt.dll: ungetwc()
+# 1 0x75BDB04D in C:\WINDOWS\System32\msvcrt.dll: ungetwc()
+# 2 0x75BD525D in C:\WINDOWS\System32\msvcrt.dll: sprintf()
+
+# 3 0x0042BDC0 in C:\Users\Kids\Desktop\Новая папка (4)\today\bin\Debug\today.exe: main() at C:/Users/Kids/Desktop/Новая папка (4)/today/main.cpp (64):
+
+     62:   //  play player = {0, 0, };
+     63:     txCreateWindow(800, 600);
+=>   64:     sprintf ("Motivatop_help", txGetModuleFileName (false));
+     65: 
+     66: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\Kids\Desktop\Новая папка (4)\today\main.cpp (64):
+
+     62:   //  play player = {0, 0, };
+     63:     txCreateWindow(800, 600);
+=>   64:     sprintf ("Motivatop_help", txGetModuleFileName (false));
+     65: 
+     66: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codelblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Feb  2 2023 10:15:53, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Feb 02 2023 10:15:57
+
+Run file:	C:\Users\Kids\Desktop\Новая папка (4)\today\bin\Debug\today.exe
+Directory:	C:\Users\Kids\Desktop\Новая папка (4)\today
+
+--------------------------------------------------
