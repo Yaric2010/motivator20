@@ -10,6 +10,7 @@ std::string a = "";
 HDC  menu = txLoadImage ("menu.bmp");
 HDC  login = txLoadImage ("login.bmp");
 HDC  ball = txLoadImage ("ball.bmp");
+HDC  reg = txLoadImage ("register.bmp");
 
 std::string line;
 
@@ -89,7 +90,15 @@ int main()
 
         txBitBlt (txDC(), 0, 0, 800, 600, menu);
 
-
+      /*  if(X_mouse > 286 and X_mouse < 512 and Y_mouse > 405 and Y_mouse < 462 and txMouseButtons() == 1)
+        {
+            a = "";
+            while(true)
+            {
+                txBitBlt (txDC(), 0, 0, 800, 600, reg);
+                txTextOut(0, 0, std::string a);
+            }
+        }    */
 
         if(X_mouse > 100 and X_mouse < 325 and Y_mouse > 214 and Y_mouse < 269 and txMouseButtons() == 1)
         {
