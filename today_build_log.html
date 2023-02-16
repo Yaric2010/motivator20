@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>today build log</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+<body>
+<tt>
+Build started on: <u>16-02-2023 at 10:25.11</u><br />
+Build ended on: <u>16-02-2023 at 10:25.15</u><p />
+<b>-------------- Build: Debug in today (compiler: NOT FOR PROJECTS! = MinGW GCC + Strict + Fast + Save (Requires Git))---------------</b><br />
+g++git-auto.bat "C:\Users\Kids\Desktop\today\main.cpp" -o bin\Debug\today.exe -mwindows  -Wall -fexceptions  -g  -Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wundef -Wfloat-equal -Winline -Wunreachable-code -Wmissing-declarations -Wmissing-include-dirs -Wswitch-enum -Wswitch-default -Weffc++ -Wmain -Wextra -Wall -g -pipe -fexceptions -Wcast-qual -Wconversion -Wctor-dtor-privacy -Wempty-body -Wformat-security -Wformat=2 -Wignored-qualifiers -Wlogical-op -Wmissing-field-initializers -Wnon-virtual-dtor -Woverloaded-virtual -Wpointer-arith -Wsign-promo -Wstack-usage=8192 -Wstrict-aliasing -Wstrict-null-sentinel -Wtype-limits -Wwrite-strings -D_DEBUG -D_EJUDGE_CLIENT_SIDE -D_EJC<br />
+------------------------------------------------------------------------------------------------------<br />
+Compilation ERRORS:<br />
+<br />
+In file included from C:\Users\Kids\Desktop\today\main.cpp:2:0:<br />
+C:\Users\Kids\Desktop\today\play.cpp: In function 'void play()':<br />
+<font color="#0000ff">C:\Users\Kids\Desktop\today\play.cpp:4:6: warning: no previous declaration for 'void play()' [-Wmissing-declarations]</font><br />
+ void play()<br />
+      ^<br />
+<font color="#0000ff">C:\Users\Kids\Desktop\today\play.cpp:10:9: warning: unused variable 'y' [-Wunused-variable]</font><br />
+     int y = 0;<br />
+         ^<br />
+<font color="#0000ff">C:\Users\Kids\Desktop\today\play.cpp:11:9: warning: unused variable 'level' [-Wunused-variable]</font><br />
+     int level = 1;<br />
+         ^<br />
+C:\Users\Kids\Desktop\today\main.cpp: In function 'void boll()':<br />
+<font color="#0000ff">C:\Users\Kids\Desktop\today\main.cpp:32:6: warning: no previous declaration for 'void boll()' [-Wmissing-declarations]</font><br />
+ void boll()<br />
+      ^<br />
+C:\Users\Kids\Desktop\today\main.cpp: In function 'void boll2()':<br />
+<font color="#0000ff">C:\Users\Kids\Desktop\today\main.cpp:58:6: warning: no previous declaration for 'void boll2()' [-Wmissing-declarations]</font><br />
+ void boll2()<br />
+      ^<br />
+C:\Users\Kids\Desktop\today\main.cpp: In function 'int main()':<br />
+<font color="#0000ff">C:\Users\Kids\Desktop\today\main.cpp:102:17: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
+         X_mouse = txMouseX();<br />
+                 ^<br />
+<font color="#0000ff">C:\Users\Kids\Desktop\today\main.cpp:103:17: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
+         Y_mouse = txMouseY();<br />
+                 ^<br />
+<font color="#0000ff">C:\Users\Kids\Desktop\today\main.cpp:188:30: warning: declaration of 'out' shadows a previous local [-Wshadow]</font><br />
+             std::ofstream out("parol.txt", std::ios::app);<br />
+                              ^<br />
+<font color="#0000ff">C:\Users\Kids\Desktop\today\main.cpp:91:19: warning: shadowed declaration is here [-Wshadow]</font><br />
+     std::ofstream out;          // поток для записи<br />
+                   ^<br />
+<font color="#0000ff">C:\Users\Kids\Desktop\today\main.cpp:86:14: warning: unused variable 'stikmen_ios' [-Wunused-variable]</font><br />
+     stik_ios stikmen_ios = {0, 0, txLoadImage("stik1.bmp")};<br />
+              ^<br />
+<font color="#0000ff">c:\codelblocks\codeblocks\mingw\include\txlib.h: In instantiation of 'bool {anonymous}::TX::In(std::nomeow_t, Tx, Ta, Tb) [with Tx = unsigned char*; Ta = unsigned char*; Tb = unsigned char*]':</font><br />
+<font color="#0000ff">c:\codelblocks\codeblocks\mingw\include\txlib.h:9616:108:   required from here</font><br />
+<font color="#0000ff">C:\Users\Kids\Desktop\today\main.cpp:10:13: warning: shadowed declaration is here [-Wshadow]</font><br />
+ std::string a = "";<br />
+             ^<br />
+<font color="#0000ff">c:\codelblocks\codeblocks\mingw\include\txlib.h: In instantiation of 'bool {anonymous}::TX::In(std::nomeow_t, Tx, Ta, Tb) [with Tx = unsigned char; Ta = char; Tb = char]':</font><br />
+<font color="#0000ff">c:\codelblocks\codeblocks\mingw\include\txlib.h:9894:9:   required from here</font><br />
+<font color="#0000ff">C:\Users\Kids\Desktop\today\main.cpp:10:13: warning: shadowed declaration is here [-Wshadow]</font><br />
+<font color="#0000ff">c:\codelblocks\codeblocks\mingw\include\txlib.h: In instantiation of 'bool {anonymous}::TX::In(std::nomeow_t, Tx, Ta, Tb) [with Tx = long int; Ta = long int; Tb = long int]':</font><br />
+<font color="#0000ff">c:\codelblocks\codeblocks\mingw\include\txlib.h:14952:56:   required from here</font><br />
+<font color="#0000ff">C:\Users\Kids\Desktop\today\main.cpp:10:13: warning: shadowed declaration is here [-Wshadow]</font><br />
+<font color="#0000ff">c:\codelblocks\codeblocks\mingw\include\txlib.h: In instantiation of 'bool {anonymous}::TX::In(std::nomeow_t, Tx, Ta, Tb) [with Tx = short int; Ta = short int; Tb = short int]':</font><br />
+<font color="#0000ff">c:\codelblocks\codeblocks\mingw\include\txlib.h:14963:56:   required from here</font><br />
+<font color="#0000ff">C:\Users\Kids\Desktop\today\main.cpp:10:13: warning: shadowed declaration is here [-Wshadow]</font><br />
+C:\Users\Kids\Desktop\today\main.cpp: In function 'void boll()':<br />
+<font color="#0000ff">C:\Users\Kids\Desktop\today\main.cpp:32:6: warning: function might be candidate for attribute 'noreturn' [-Wsuggest-attribute=noreturn]</font><br />
+ void boll()<br />
+      ^<br />
+------------------------------------------------------------------------------------------------------<br />
+Autosaving to the Git repository in C:/Users/Kids/Desktop/today/.git-auto/... <br />
+Output size is 2,26 MB<br />
+<font color="#0000ff">Process terminated with status 0 (0 minutes, 4 seconds)</font><br />
+<font color="#0000ff">0 errors, 23 warnings (0 minutes, 4 seconds)</font><br />
+</tt>
+</body>
+</html>

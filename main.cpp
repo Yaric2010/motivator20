@@ -1,0 +1,610 @@
+#include "TXLib.h"
+#include "play.cpp"
+#include <iostream>
+#include <fstream>
+#include <string>
+
+int X_mouse = 0;
+int Y_mouse = 0;
+int p = 0;
+std::string a = "";
+HDC  menu = txLoadImage ("menu.bmp");
+HDC  login = txLoadImage ("login.bmp");
+HDC  ball = txLoadImage ("ball.bmp");
+HDC  reg = txLoadImage ("register.bmp");
+
+std::string line;
+
+
+
+
+
+
+struct stik_ios
+{
+    int x;
+    int y;
+    HDC right;
+
+
+};
+
+void boll()
+{
+    txBitBlt (txDC(), 0, 0, 800, 600, ball);
+    std::string prog1;
+    std::ifstream in("morning.txt"); // окрываем файл для чтения
+    while(true)
+    {
+        if (in.is_open())
+        {
+            while (getline(in, prog1))
+            {
+                txSetColor(TX_BLACK);
+                 txSelectFont ("Arial", 14, 0, FW_BOLD);
+
+                txTextOut(4,31, prog1.c_str());
+            }
+        }
+
+       //txTextOut (100, 100, prog1);
+
+    }
+
+
+}
+
+
+void boll2()
+{
+    txBitBlt (txDC(), 0, 0, 800, 600, ball);
+    std::string prog1;
+    std::ifstream in("morning.txt"); // окрываем файл для чтения
+
+    if (in.is_open())
+    {
+        while (getline(in, prog1))
+        {
+            txSetColor(TX_BLACK);
+             txSelectFont ("Arial", 14, 0, FW_BOLD);
+
+            txTextOut(4,31, prog1.c_str());
+        }
+    }
+
+   //txTextOut (100, 100, prog1);
+
+
+
+
+}
+
+
+int main()
+{
+    setlocale(LC_ALL, "Russian");
+    stik_ios stikmen_ios = {0, 0, txLoadImage("stik1.bmp")};
+    txCreateWindow(800, 600);
+
+
+
+    std::ofstream out;          // поток для записи
+
+
+    std::ofstream morning1;          // поток для записи
+
+
+    txDisableAutoPause();
+
+    while(!GetAsyncKeyState(VK_ESCAPE))
+    {
+
+        X_mouse = txMouseX();
+        Y_mouse = txMouseY();
+
+        txBitBlt (txDC(), 0, 0, 800, 600, menu);
+
+        if(X_mouse > 286 and X_mouse < 512 and Y_mouse > 405 and Y_mouse < 462 and txMouseButtons() == 1)
+        {
+            a = "";
+            while(!GetAsyncKeyState(VK_RETURN))
+            {
+                txSleep(200);
+                txBitBlt (txDC(), 0, 0, 800, 600, reg);
+                //txTextOut(0, 0, std::string a);
+                txSetColor(TX_BLACK);
+                txTextOut(226,407, a.c_str());
+
+                if(GetAsyncKeyState('A'))
+                {
+                    a = a += 'A';
+                }
+                else if(GetAsyncKeyState('Q'))
+                {
+                    a = a += 'Q';
+                }
+                else if(GetAsyncKeyState('W'))
+                {
+                    a = a += 'W';
+                }
+                else if(GetAsyncKeyState('S'))
+                {
+                    a = a += 'S';
+                }
+                else if(GetAsyncKeyState('E'))
+                {
+                    a = a += 'E';
+                }
+                else if(GetAsyncKeyState('D'))
+                {
+                    a = a += 'D';
+                }
+                else if(GetAsyncKeyState('R'))
+                {
+                    a = a += 'R';
+                }
+                else if(GetAsyncKeyState('F'))
+                {
+                    a = a += 'F';
+                }
+                else if(GetAsyncKeyState('T'))
+                {
+                    a = a += 'T';
+                }
+                else if(GetAsyncKeyState('G'))
+                {
+                    a = a += 'G';
+                }
+                else if(GetAsyncKeyState('Y'))
+                {
+                    a = a += 'Y';
+                }
+                else if(GetAsyncKeyState('H'))
+                {
+                    a = a += 'H';
+                }
+                else if(GetAsyncKeyState('U'))
+                {
+                    a = a += 'U';
+                }
+                else if(GetAsyncKeyState('J'))
+                {
+                    a = a += 'J';
+                }
+                else if(GetAsyncKeyState('I'))
+                {
+                    a = a += 'I';
+                }
+                else if(GetAsyncKeyState('K'))
+                {
+                    a = a += 'K';
+                }
+                else if(GetAsyncKeyState('O'))
+                {
+                    a = a += 'O';
+                }
+            }
+
+            std::ofstream out("parol.txt", std::ios::app);
+            if (out.is_open())
+            {
+                out << a << std::endl;
+            }
+            out.close();
+
+            boll2();
+            txSleep(200);
+
+            a = "";
+            while(!GetAsyncKeyState(VK_RETURN))
+            {
+                txSleep(200);
+                if(GetAsyncKeyState('A'))
+                {
+                    a = a += 'A';
+                }
+
+                if(GetAsyncKeyState('Й'))
+                {
+                    a = a += 'Й';
+                }
+                if(GetAsyncKeyState('Ы'))
+                {
+                    a = a += 'Ы';
+                }
+                if(GetAsyncKeyState('Ц'))
+                {
+                    a = a += 'Ц';
+                }
+                if(GetAsyncKeyState('В'))
+                {
+                    a = a += 'В';
+                }
+                if(GetAsyncKeyState('У'))
+                {
+                    a = a += 'У';
+                }
+                if(GetAsyncKeyState('А'))
+                {
+                    a = a += 'А';
+                }
+                if(GetAsyncKeyState('К'))
+                {
+                    a = a += 'К';
+                }
+                if(GetAsyncKeyState('П'))
+                {
+                    a = a += 'П';
+                }
+                if(GetAsyncKeyState('Е'))
+                {
+                    a = a += 'Е';
+                }
+                if(GetAsyncKeyState('Р'))
+                {
+                    a = a += 'Р';
+                }
+                if(GetAsyncKeyState('Н'))
+                {
+                    a = a += 'Н';
+                }
+                if(GetAsyncKeyState('О'))
+                {
+                    a = a += 'О';
+                }
+                if(GetAsyncKeyState('Г'))
+                {
+                    a = a += 'Г';
+                }
+                if(GetAsyncKeyState('Л'))
+                {
+                    a = a += 'Л';
+                }
+                if(GetAsyncKeyState('Ш'))
+                {
+                    a = a += 'Ш';
+                }
+                if(GetAsyncKeyState('Д'))
+                {
+                    a = a += 'Д';
+                }
+                if(GetAsyncKeyState('Щ'))
+                {
+                    a = a += 'Щ';
+                }
+                if(GetAsyncKeyState('Ж'))
+                {
+                    a = a += 'Ж';
+                }
+                if(GetAsyncKeyState('З'))
+                {
+                    a = a += 'З';
+                }
+                if(GetAsyncKeyState('Х'))
+                {
+                    a = a += 'Э';
+                }
+                if(GetAsyncKeyState('Э'))
+                {
+                    a = a += 'Х';
+                }
+                if(GetAsyncKeyState('Ъ'))
+                {
+                    a = a += 'Ъ';
+                }
+                if(GetAsyncKeyState('Я'))
+                {
+                    a = a += 'Я';
+                }
+                if(GetAsyncKeyState('Ч'))
+                {
+                    a = a += 'Ч';
+                }
+                if(GetAsyncKeyState('С'))
+                {
+                    a = a += 'С';
+                }
+                if(GetAsyncKeyState('М'))
+                {
+                    a = a += 'М';
+                }
+                if(GetAsyncKeyState('И'))
+                {
+                    a = a += 'И';
+                }
+                if(GetAsyncKeyState('Т'))
+                {
+                    a = a += 'Т';
+                }
+                if(GetAsyncKeyState('Ь'))
+                {
+                    a = a += 'Ь';
+                }
+
+                if(GetAsyncKeyState('Б'))
+                {
+                    a = a += 'Б';
+                }
+                if(GetAsyncKeyState('Ю'))
+                {
+                    a = a += 'Ю';
+                }
+                boll2();
+            }
+            std::ofstream output;
+            output.open("morning.txt"); // окрываем файл для записи
+            if (output.is_open())
+            {
+                output << a << std::endl;
+            }
+
+            txSleep(200);
+
+            a = "";
+            while(!GetAsyncKeyState(VK_RETURN))
+            {
+
+                if(GetAsyncKeyState('A'))
+                {
+                    a = a += 'A';
+                }
+
+                if(GetAsyncKeyState('Й'))
+                {
+                    a = a += 'Й';
+                }
+                if(GetAsyncKeyState('Ы'))
+                {
+                    a = a += 'Ы';
+                }
+                if(GetAsyncKeyState('Ц'))
+                {
+                    a = a += 'Ц';
+                }
+                if(GetAsyncKeyState('В'))
+                {
+                    a = a += 'В';
+                }
+                if(GetAsyncKeyState('У'))
+                {
+                    a = a += 'У';
+                }
+                if(GetAsyncKeyState('А'))
+                {
+                    a = a += 'А';
+                }
+                if(GetAsyncKeyState('К'))
+                {
+                    a = a += 'К';
+                }
+                if(GetAsyncKeyState('П'))
+                {
+                    a = a += 'П';
+                }
+                if(GetAsyncKeyState('Е'))
+                {
+                    a = a += 'Е';
+                }
+                if(GetAsyncKeyState('Р'))
+                {
+                    a = a += 'Р';
+                }
+                if(GetAsyncKeyState('Н'))
+                {
+                    a = a += 'Н';
+                }
+                if(GetAsyncKeyState('О'))
+                {
+                    a = a += 'О';
+                }
+                if(GetAsyncKeyState('Г'))
+                {
+                    a = a += 'Г';
+                }
+                if(GetAsyncKeyState('Л'))
+                {
+                    a = a += 'Л';
+                }
+                if(GetAsyncKeyState('Ш'))
+                {
+                    a = a += 'Ш';
+                }
+                if(GetAsyncKeyState('Д'))
+                {
+                    a = a += 'Д';
+                }
+                if(GetAsyncKeyState('Щ'))
+                {
+                    a = a += 'Щ';
+                }
+                if(GetAsyncKeyState('Ж'))
+                {
+                    a = a += 'Ж';
+                }
+                if(GetAsyncKeyState('З'))
+                {
+                    a = a += 'З';
+                }
+                if(GetAsyncKeyState('Х'))
+                {
+                    a = a += 'Э';
+                }
+                if(GetAsyncKeyState('Э'))
+                {
+                    a = a += 'Х';
+                }
+                if(GetAsyncKeyState('Ъ'))
+                {
+                    a = a += 'Ъ';
+                }
+                if(GetAsyncKeyState('Я'))
+                {
+                    a = a += 'Я';
+                }
+                if(GetAsyncKeyState('Ч'))
+                {
+                    a = a += 'Ч';
+                }
+                if(GetAsyncKeyState('С'))
+                {
+                    a = a += 'С';
+                }
+                if(GetAsyncKeyState('М'))
+                {
+                    a = a += 'М';
+                }
+                if(GetAsyncKeyState('И'))
+                {
+                    a = a += 'И';
+                }
+                if(GetAsyncKeyState('Т'))
+                {
+                    a = a += 'Т';
+                }
+                if(GetAsyncKeyState('Ь'))
+                {
+                    a = a += 'Ь';
+                }
+
+                if(GetAsyncKeyState('Б'))
+                {
+                    a = a += 'Б';
+                }
+                if(GetAsyncKeyState('Ю'))
+                {
+                    a = a += 'Ю';
+                }
+                boll2();
+                txSleep(200);
+            }
+
+          /*  std::ofstream out("morning.txt", std::ios::app);
+            if (out.is_open())
+            {
+                out << "Welcome to CPP" << std::endl;
+            }
+            out.close();
+           */
+      }
+
+        if(X_mouse > 100 and X_mouse < 325 and Y_mouse > 214 and Y_mouse < 269 and txMouseButtons() == 1)
+        {
+
+            a = "";
+            p = 0;
+            txBitBlt (txDC(), 0, 0, 800, 600, login);
+
+            while(p==0)
+            {
+
+
+
+                if(GetAsyncKeyState('A'))
+                {
+                    a = a += 'A';
+                }
+                else if(GetAsyncKeyState('Q'))
+                {
+                    a = a += 'Q';
+                }
+                else if(GetAsyncKeyState('W'))
+                {
+                    a = a += 'W';
+                }
+                else if(GetAsyncKeyState('S'))
+                {
+                    a = a += 'S';
+                }
+                else if(GetAsyncKeyState('E'))
+                {
+                    a = a += 'E';
+                }
+                else if(GetAsyncKeyState('D'))
+                {
+                    a = a += 'D';
+                }
+                else if(GetAsyncKeyState('R'))
+                {
+                    a = a += 'R';
+                }
+                else if(GetAsyncKeyState('F'))
+                {
+                    a = a += 'F';
+                }
+                else if(GetAsyncKeyState('T'))
+                {
+                    a = a += 'T';
+                }
+                else if(GetAsyncKeyState('G'))
+                {
+                    a = a += 'G';
+                }
+                else if(GetAsyncKeyState('Y'))
+                {
+                    a = a += 'Y';
+                }
+                else if(GetAsyncKeyState('H'))
+                {
+                    a = a += 'H';
+                }
+                else if(GetAsyncKeyState('U'))
+                {
+                    a = a += 'U';
+                }
+                else if(GetAsyncKeyState('J'))
+                {
+                    a = a += 'J';
+                }
+                else if(GetAsyncKeyState('I'))
+                {
+                    a = a += 'I';
+                }
+                else if(GetAsyncKeyState('K'))
+                {
+                    a = a += 'K';
+                }
+                else if(GetAsyncKeyState('O'))
+                {
+                    a = a += 'O';
+                }
+
+                std::ifstream in("parol.txt"); // окрываем файл для чтения
+                if (in.is_open())
+                {
+                    while (getline(in, line))
+                    {
+                        if (line == a)
+                        {
+                            p=1;
+
+                        }
+                        cout << a << std::endl;
+                    }
+                }
+                in.close();
+                txSleep(500);
+
+             }
+
+         boll();
+
+         }
+
+        if(X_mouse > 469 and X_mouse < 694 and Y_mouse > 209 and Y_mouse < 267 and txMouseButtons() == 1)
+        {
+            play();
+        }
+}
+
+    txDeleteDC (menu);
+    txDeleteDC (login);
+    txDeleteDC (ball);
+
+
+
+
+
+    txTextCursor (false);
+    return 0;
+}
+

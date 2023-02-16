@@ -1,4 +1,5 @@
-#include "TXLib.h"  1
+#include "TXLib.h"
+#include "play.cpp"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -11,7 +12,7 @@ HDC  menu = txLoadImage ("menu.bmp");
 HDC  login = txLoadImage ("login.bmp");
 HDC  ball = txLoadImage ("ball.bmp");
 HDC  reg = txLoadImage ("register.bmp");
-HDC  fon_or = txLoadImage ("oxr.bmp");
+
 std::string line;
 int cam = 0;
 
@@ -591,46 +592,7 @@ int main()
 
         if(X_mouse > 469 and X_mouse < 694 and Y_mouse > 209 and Y_mouse < 267 and txMouseButtons() == 1)
         {
-            while(!GetAsyncKeyState(VK_ESCAPE))
-            {
-               
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            }
+            play();
         }
 }
 
