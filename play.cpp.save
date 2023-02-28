@@ -5,7 +5,7 @@ void play()
 {
     HDC fon = txLoadImage ("tanks_fon.bmp");
     HDC levels = txLoadImage ("titrs.bmp");
-    HDC tank1 = txLoadImage ("tanks_1.bmp");
+    HDC pinguin = txLoadImage ("pinguin.bmp");
     int x = 0;
     int y = 0;
     int level = 1;
@@ -26,7 +26,7 @@ void play()
     {
         txBitBlt (txDC(), x, 0, 8000, 600, fon);
         txTransparentBlt (txDC(), 0, 343, 254, 134, tank1, 0, 0, TX_WHITE);
-        if(GetAsyncKeyState('D'))
+        if(GetAsyncKeyState('D'))                                             
         {
             x = x-3;
         }

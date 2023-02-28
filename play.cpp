@@ -5,7 +5,7 @@ void play()
 {
     HDC fon = txLoadImage ("tanks_fon.bmp");
     HDC levels = txLoadImage ("titrs.bmp");
-    HDC tank1 = txLoadImage ("tanks_1.bmp");
+    HDC pinguin = txLoadImage ("pinguin.bmp");
     int x = 0;
     int y = 0;
     int level = 1;
