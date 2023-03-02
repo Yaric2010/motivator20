@@ -1,13 +1,33 @@
 #include "TXLib.h"
 
 
+struct Play
+{
+    int x;
+    int y;
+    HDC player;
+    HDC players;
+};
+
+struct fon1
+{
+    int x;
+    int y;
+    HDC fon;
+
+
+};
+
+
 void play()
 {
-    HDC fon = txLoadImage ("tanks_fon.bmp");
     HDC levels = txLoadImage ("titrs.bmp");
-    HDC pinguin = txLoadImage ("pinguin.bmp");
-    int x = 0;
-    int y = 0;
+
+    Play played = {24, 302, txLoadImage("mario.bmp"), txLoadImage("mario+s.bmp")};
+    fon1 fonik = {0, 0, txLoadImage("fon1.bmp")};
+    float i;
+
+
     int level = 1;
 
 
@@ -21,136 +41,78 @@ void play()
     txTextOut(562, 255, "1");
     txSleep(500);
 
-
-    while(!GetAsyncKeyState(VK_ESCAPE))
+    while(txGetPixel(played.x, played.y) != RGB(34, 177, 76))
     {
-        txBitBlt (txDC(), x, 0, 8000, 600, fon);
+
+        txBitBlt (txDC(), fonik.x, fonik.y, 4988, 1736, fonik.fon);
+
+        txTransparentBlt (txDC(), played.x, played.y, 61, 78, played.player, 0, 0, TX_WHITE);
+
+        if(GetAsyncKeyState('D') and played.x < 700)
+        {
+            played.x = played.x+3;
+        }
+        if(GetAsyncKeyState('A'))
+        {
+            played.x = played.x-3;
+        }
+
+        if(txGetPixel(played.x + 61, played.y + 78) != RGB(77, 113, 23))
+        {
+
+            played.y = played.y + 6;
+
+        }
+
+        if(GetAsyncKeyState(VK_SPACE) and txGetPixel(played.x + 61, played.y + 78) == RGB(77, 113, 23))
+        {
+            i = 22;
+            while(i != 1)
+            {
+                txBitBlt (txDC(), fonik.x, fonik.y, 4988, 1736, fonik.fon);
+
+                txTransparentBlt (txDC(), played.x, played.y, 61, 78, played.player, 0, 0, TX_WHITE);
+
+                played.y -=i;
+
+                if(txGetPixel(played.x + 61, played.y + 78) != RGB(77, 113, 23))
+                {
+
+                    played.y = played.y + 6;
+
+                }
+
+                if(GetAsyncKeyState('D') and played.x < 700)
+                {
+                    played.x = played.x+3;
+                }
+
+                if(GetAsyncKeyState('A'))
+                {
+                    played.x = played.x-3;
+                }
+
+
+                i -=1;
+                txSleep(5);
+            }
+         }
+        txSleep(5);
+    }
+
+
+
+
+
+
+    /*
         txTransparentBlt (txDC(), 0, 343, 254, 134, tank1, 0, 0, TX_WHITE);
-        if(GetAsyncKeyState('D'))                                             
+        if(GetAsyncKeyState('D'))
         {
             x = x-3;
         }
         if(GetAsyncKeyState('A'))
         {
             x = x+3;
-        }
-        txSleep(3);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    }
-
-    txDeleteDC (fon);
-    txDeleteDC (tank1);
-    txDeleteDC (levels);
+        }  */
 }
