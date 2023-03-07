@@ -46,18 +46,25 @@ void play()
 
         txBitBlt (txDC(), fonik.x, fonik.y, 4988, 1736, fonik.fon);
 
-        txTransparentBlt (txDC(), played.x, played.y, 61, 78, played.player, 0, 0, TX_WHITE);
+        if(GetAsyncKeyState(VK_SHIFT) and GetAsyncKeyState('S'))
+        {
+            txTransparentBlt (txDC(), played.x, played.y + 58, 61, 20, played.players, 0, 0, TX_WHITE);
+        }
+        else
+        {
+            txTransparentBlt (txDC(), played.x, played.y, 61, 78, played.player, 0, 0, TX_WHITE);
+        }
 
-        if(GetAsyncKeyState('D') and played.x < 700)
+        if(GetAsyncKeyState('D') and played.x <= 700 and txGetPixel(played.x + 61, played.y + 30) != RGB(77, 113, 23))
         {
             played.x = played.x+3;
         }
-        if(GetAsyncKeyState('A'))
+        if(GetAsyncKeyState('A') and txGetPixel(played.x, played.y + 30) != RGB(77, 113, 23) )
         {
             played.x = played.x-3;
         }
 
-        if(txGetPixel(played.x + 61, played.y + 78) != RGB(77, 113, 23))
+        if(txGetPixel(played.x - 2, played.y + 78) != RGB(77, 113, 23))
         {
 
             played.y = played.y + 6;
@@ -66,7 +73,7 @@ void play()
 
 
 
-        if(GetAsyncKeyState(VK_SPACE) and txGetPixel(played.x + 61, played.y + 78) == RGB(77, 113, 23))
+        if(GetAsyncKeyState(VK_SPACE) and txGetPixel(played.x - 2, played.y + 78)  == RGB(77, 113, 23))
         {
             i = 22;
             while(i != 1)
@@ -77,19 +84,19 @@ void play()
 
                 played.y -=i;
 
-                if(txGetPixel(played.x + 61, played.y + 78) != RGB(77, 113, 23))
+                if( txGetPixel(played.x + 61, played.y + 78) != RGB(77, 113, 23) or txGetPixel(played.x - 2, played.y + 78) != RGB(77, 113, 23))
                 {
 
                     played.y = played.y + 6;
 
                 }
 
-                if(GetAsyncKeyState('D') and played.x < 700)
+                if(GetAsyncKeyState('D') and played.x <= 700 and txGetPixel(played.x + 61, played.y + 30) != RGB(77, 113, 23))
                 {
                     played.x = played.x+3;
                 }
 
-                if(GetAsyncKeyState('A'))
+                if(GetAsyncKeyState('A') and txGetPixel(played.x, played.y + 30) != RGB(77, 113, 23))
                 {
                     played.x = played.x-3;
                 }
@@ -100,6 +107,18 @@ void play()
             }
          }
         txSleep(5);
+
+        if(played.x + 61 > 699)
+        {
+            for(int i = 0; i < 100; i += 1)
+            {
+                txBitBlt (txDC(), fonik.x, fonik.y, 4988, 1736, fonik.fon);
+                txTransparentBlt (txDC(), played.x, played.y, 61, 78, played.player, 0, 0, TX_WHITE);
+                fonik.x -= 6;
+                played.x -= 6;
+                txSleep(1);
+            }
+        }
     }
 
 
