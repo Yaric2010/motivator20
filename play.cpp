@@ -5,8 +5,11 @@ struct Play
 {
     int x;
     int y;
+    int xD;
+    int yD;
     HDC player;
     HDC players;
+    HDC dc;
 };
 
 struct fon1
@@ -23,7 +26,7 @@ void play()
 {
     HDC levels = txLoadImage ("titrs.bmp");
 
-    Play played = {24, 302, txLoadImage("mario.bmp"), txLoadImage("mario+s.bmp")};
+    Play played = {24, 302, 0, 0, txLoadImage("mario.bmp"), txLoadImage("mario+s.bmp"), txLoadImage("D.bmp")};
     fon1 fonik = {0, 0, txLoadImage("fon1.bmp")};
     float i;
 
@@ -66,11 +69,27 @@ void play()
 
         if(txGetPixel(played.x - 2, played.y + 78) != RGB(77, 113, 23))
         {
-
             played.y = played.y + 6;
-
         }
+        if(!GetAsyncKeyState(VK_SHIFT) and !GetAsyncKeyState('S'))
+        {
 
+            if(txGetPixel(played.x + 61, played.y ) == RGB(193, 226, 10) or txGetPixel(played.x - 2, played.y ) == RGB(193, 226, 10) or txGetPixel(played.x + 61, played.y + 78) == RGB(193, 226, 10) or txGetPixel(played.x - 2, played.y + 78) == RGB(193, 226, 10))
+            {
+                txSetFillColor(TX_RED);
+                txRectangle(0, 0, 800, 600);
+
+                played.x = 24;
+                played.y = 302;
+                fonik.x = 0;
+
+                txSleep(200);
+
+
+
+
+            }
+        }
 
 
         if(GetAsyncKeyState(VK_SPACE) and txGetPixel(played.x - 2, played.y + 78)  == RGB(77, 113, 23))
@@ -101,12 +120,31 @@ void play()
                     played.x = played.x-3;
                 }
 
+                if(!GetAsyncKeyState(VK_SHIFT) and !GetAsyncKeyState('S') and txGetPixel(played.x + 61, played.y ) == RGB(193, 226, 10) or txGetPixel(played.x - 2, played.y ) == RGB(193, 226, 10) or txGetPixel(played.x + 61, played.y + 78) == RGB(193, 226, 10) or txGetPixel(played.x - 2, played.y + 78) == RGB(193, 226, 10) )
+                {
+                    txSetFillColor(TX_RED);
+                    txRectangle(0, 0, 800, 600);
+
+                    played.x = 24;
+                    played.y = 302;
+                    fonik.x = 0;
+
+                    txSleep(200);
+
+
+
+                }
 
                 i -=1;
                 txSleep(5);
             }
          }
+
+
+
         txSleep(5);
+
+
 
         if(played.x + 61 > 699)
         {

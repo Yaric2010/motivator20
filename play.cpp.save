@@ -5,8 +5,11 @@ struct Play
 {
     int x;
     int y;
+    int xD;
+    int yD;
     HDC player;
     HDC players;
+    HDC dc;
 };
 
 struct fon1
@@ -23,10 +26,10 @@ void play()
 {
     HDC levels = txLoadImage ("titrs.bmp");
 
-    Play played = {24, 302, txLoadImage("mario.bmp"), txLoadImage("mario+s.bmp")};
+    Play played = {24, 302, 0, 0, txLoadImage("mario.bmp"), txLoadImage("mario+s.bmp"), txLoadImage("D.bmp")};
     fon1 fonik = {0, 0, txLoadImage("fon1.bmp")};
     float i;
-
+    int o = 0;
 
     int level = 1;
 
@@ -66,11 +69,27 @@ void play()
 
         if(txGetPixel(played.x - 2, played.y + 78) != RGB(77, 113, 23))
         {
-
             played.y = played.y + 6;
-
         }
+        if(!GetAsyncKeyState(VK_SHIFT) and !GetAsyncKeyState('S'))
+        {
 
+            if(txGetPixel(played.x + 61, played.y ) == RGB(193, 226, 10) or txGetPixel(played.x - 2, played.y ) == RGB(193, 226, 10) or txGetPixel(played.x + 61, played.y + 78) == RGB(193, 226, 10) or txGetPixel(played.x - 2, played.y + 78) == RGB(193, 226, 10))
+            {
+                txSetFillColor(TX_RED);
+                txRectangle(0, 0, 800, 600);
+
+                played.x = 24;
+                played.y = 302;
+                fonik.x = 0;
+
+                txSleep(200);
+
+
+
+
+            }
+        }
 
 
         if(GetAsyncKeyState(VK_SPACE) and txGetPixel(played.x - 2, played.y + 78)  == RGB(77, 113, 23))
@@ -101,15 +120,138 @@ void play()
                     played.x = played.x-3;
                 }
 
+                if(!GetAsyncKeyState(VK_SHIFT) and !GetAsyncKeyState('S') and txGetPixel(played.x + 61, played.y ) == RGB(193, 226, 10) or txGetPixel(played.x - 2, played.y ) == RGB(193, 226, 10) or txGetPixel(played.x + 61, played.y + 78) == RGB(193, 226, 10) or txGetPixel(played.x - 2, played.y + 78) == RGB(193, 226, 10) )
+                {
+                    txSetFillColor(TX_RED);
+                    txRectangle(0, 0, 800, 600);
+
+                    played.x = 24;
+                    played.y = 302;
+                    fonik.x = 0;
+
+                    txSleep(200);
+
+
+
+                }
 
                 i -=1;
                 txSleep(5);
             }
          }
-        txSleep(5);
 
-        if(played.x + 61 > 699)
+        if(GetAsyncKeyState(VK_SHIFT) and GetAsyncKeyState('D'));
         {
+            o = 0;
+            played.xD = played.x + 50;
+            played.yD = played.y + 20;
+            while(played.yD > 0 or o != 1)
+            {
+                txTransparentBlt (txDC(), played.xD, played.yD, 61, 78, played.dc, 0, 0, TX_WHITE);
+                played.xD += 2;
+                played.yD -= 2;
+                if(txGetPixel(played.xD, played.yD) == RGB(237, 28, 36))
+                {
+                    for(int i = 0; i <)
+                    {
+                        played.yD = -20;
+                        txSetFillColor(RGB(77, 113, 23));
+                        txRectangle(played.x, played.y, played.x + 900, played.y + 20);
+                        if(GetAsyncKeyState('D') and played.x <= 700 and txGetPixel(played.x + 61, played.y + 30) != RGB(77, 113, 23))
+                        {
+                            played.x = played.x+3;
+                        }
+                        if(GetAsyncKeyState('A') and txGetPixel(played.x, played.y + 30) != RGB(77, 113, 23) )
+                        {
+                            played.x = played.x-3;
+                        }
+
+                        if(txGetPixel(played.x - 2, played.y + 78) != RGB(77, 113, 23))
+                        {
+                            played.y = played.y + 6;
+                        }
+                        if(!GetAsyncKeyState(VK_SHIFT) and !GetAsyncKeyState('S'))
+                        {
+
+                            if(txGetPixel(played.x + 61, played.y ) == RGB(193, 226, 10) or txGetPixel(played.x - 2, played.y ) == RGB(193, 226, 10) or txGetPixel(played.x + 61, played.y + 78) == RGB(193, 226, 10) or txGetPixel(played.x - 2, played.y + 78) == RGB(193, 226, 10))
+                            {
+                                txSetFillColor(TX_RED);
+                                txRectangle(0, 0, 800, 600);
+
+                                played.x = 24;
+                                played.y = 302;
+                                fonik.x = 0;
+
+                                txSleep(200);
+
+
+
+
+                            }
+                        }
+
+
+                        if(GetAsyncKeyState(VK_SPACE) and txGetPixel(played.x - 2, played.y + 78)  == RGB(77, 113, 23))
+                        {
+                            i = 22;
+                            while(i != 1)
+                            {
+                                txBitBlt (txDC(), fonik.x, fonik.y, 4988, 1736, fonik.fon);
+
+                                txTransparentBlt (txDC(), played.x, played.y, 61, 78, played.player, 0, 0, TX_WHITE);
+
+                                played.y -=i;
+
+                                if( txGetPixel(played.x + 61, played.y + 78) != RGB(77, 113, 23) or txGetPixel(played.x - 2, played.y + 78) != RGB(77, 113, 23))
+                                {
+
+                                    played.y = played.y + 6;
+
+                                }
+
+                                if(GetAsyncKeyState('D') and played.x <= 700 and txGetPixel(played.x + 61, played.y + 30) != RGB(77, 113, 23))
+                                {
+                                    played.x = played.x+3;
+                                }
+
+                                if(GetAsyncKeyState('A') and txGetPixel(played.x, played.y + 30) != RGB(77, 113, 23))
+                                {
+                                    played.x = played.x-3;
+                                }
+
+                                if(!GetAsyncKeyState(VK_SHIFT) and !GetAsyncKeyState('S') and txGetPixel(played.x + 61, played.y ) == RGB(193, 226, 10) or txGetPixel(played.x - 2, played.y ) == RGB(193, 226, 10) or txGetPixel(played.x + 61, played.y + 78) == RGB(193, 226, 10) or txGetPixel(played.x - 2, played.y + 78) == RGB(193, 226, 10) )
+                                {
+                                    txSetFillColor(TX_RED);
+                                    txRectangle(0, 0, 800, 600);
+
+                                    played.x = 24;
+                                    played.y = 302;
+                                    fonik.x = 0;
+
+                                    txSleep(200);
+
+
+
+                                }
+
+                                i -=1;
+                                txSleep(5);
+                            }
+                         }
+
+                        txSleep(5);
+
+                    }
+                    o = 1;
+                }
+            }
+
+                    txSleep(5);
+
+
+
+                    if(played.x + 61 > 699)
+                    {
             for(int i = 0; i < 100; i += 1)
             {
                 txBitBlt (txDC(), fonik.x, fonik.y, 4988, 1736, fonik.fon);
