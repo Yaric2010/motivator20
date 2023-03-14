@@ -22,6 +22,7 @@ struct fon1
 };
 
 
+
 void play()
 {
     HDC levels = txLoadImage ("titrs.bmp");
@@ -29,8 +30,8 @@ void play()
     Play played = {24, 302, 0, 0, txLoadImage("mario.bmp"), txLoadImage("mario+s.bmp"), txLoadImage("D.bmp")};
     fon1 fonik = {0, 0, txLoadImage("fon1.bmp")};
     float i;
-
-
+    float i2 = 0;
+    int i3 = 21;
     int level = 1;
 
 
@@ -56,6 +57,14 @@ void play()
         else
         {
             txTransparentBlt (txDC(), played.x, played.y, 61, 78, played.player, 0, 0, TX_WHITE);
+        }
+
+        if(i2 > 0)
+        {
+            i2 -= 0.002;
+            txSetFillColor(RGB(77, 113, 23));
+            txSetColor(TX_YELLOW);
+            txRectangle(played.x - 4, 411, played.x + 60, 430);
         }
 
         if(GetAsyncKeyState('D') and played.x <= 700 and txGetPixel(played.x + 61, played.y + 30) != RGB(77, 113, 23))
@@ -103,6 +112,14 @@ void play()
 
                 played.y -=i;
 
+                if(i2 > 0)
+                {
+                    i2 -= 0.002;
+                    txSetFillColor(RGB(77, 113, 23));
+                    txSetColor(TX_YELLOW);
+                    txRectangle(played.x - 4, played.y + 78, played.x + 60, played.y + 100);
+                }
+
                 if( txGetPixel(played.x + 61, played.y + 78) != RGB(77, 113, 23) or txGetPixel(played.x - 2, played.y + 78) != RGB(77, 113, 23))
                 {
 
@@ -122,6 +139,7 @@ void play()
 
                 if(!GetAsyncKeyState(VK_SHIFT) and !GetAsyncKeyState('S') and txGetPixel(played.x + 61, played.y ) == RGB(193, 226, 10) or txGetPixel(played.x - 2, played.y ) == RGB(193, 226, 10) or txGetPixel(played.x + 61, played.y + 78) == RGB(193, 226, 10) or txGetPixel(played.x - 2, played.y + 78) == RGB(193, 226, 10) )
                 {
+                    i2 = 0;
                     txSetFillColor(TX_RED);
                     txRectangle(0, 0, 800, 600);
 
@@ -137,21 +155,87 @@ void play()
 
                 i -=1;
                 txSleep(5);
-            }
+            }txBitBlt (txDC(), fonik.x, fonik.y, 4988, 1736, fonik.fon);
+            txTransparentBlt (txDC(), played.x, played.y, 61, 78, played.player, 0, 0, TX_WHITE);
          }
 
+        if(GetAsyncKeyState(VK_SHIFT) and GetAsyncKeyState('D') and !GetAsyncKeyState('S'))
+        {
+            played.xD = played.x - 10;
+            played.yD = played.y - 30;
+            while(played.yD > 0)
+            {
+                txBitBlt (txDC(), fonik.x, fonik.y, 4988, 1736, fonik.fon);
+                txTransparentBlt (txDC(), played.xD, played.yD, 100, 61, played.dc, 0, 0, TX_WHITE);
+                txTransparentBlt (txDC(), played.x, played.y, 61, 78, played.player, 0, 0, TX_WHITE);
+                played.xD += 3;
+                played.yD -= 3;
 
+                if(txGetPixel(played.xD + 100, played.yD) == RGB(237, 28, 36) or txGetPixel(played.xD + 100, played.yD+ 10) == RGB(237, 28, 36))
+                {
+                    i2 = 1;
+                    played.xD = 20;
+                    played.yD = -10;
+                }
+
+
+                txSleep(2);
+
+            }
+        }
+
+
+
+        if(txGetPixel(played.x + 61, played.y + 78) == RGB(63, 72, 204))
+        {
+
+            while(i3 != 1)
+            {
+                txBitBlt (txDC(), fonik.x, fonik.y, 4988, 1736, fonik.fon);
+                txTransparentBlt (txDC(), played.x, played.y, 61, 78, played.player, 0, 0, TX_WHITE);
+                played.x +=10;
+                played.y -= i3;
+                i3 -=1;
+                txSleep(5);
+
+            }
+            for(int i = 0; i < 40; i++)
+            {
+                played.y = played.y + 6;
+                played.x +=10;
+                txBitBlt (txDC(), fonik.x, fonik.y, 4988, 1736, fonik.fon);
+                txTransparentBlt (txDC(), played.x, played.y, 61, 78, played.player, 0, 0, TX_WHITE);
+                txSleep(5);
+                if(played.x + 61 > 699)
+                {
+
+                    for(int i = 0; i < 100; i += 1)
+                    {
+                        txBitBlt (txDC(), fonik.x, fonik.y, 4988, 1736, fonik.fon);
+                        txTransparentBlt (txDC(), played.x, played.y, 61, 78, played.player, 0, 0, TX_WHITE);
+                        txSetFillColor(RGB(77, 113, 23));
+                        txSetColor(RGB(77, 113, 23));
+                        txRectangle(played.x - 2, 411, played.x + 60, 430);
+                        fonik.x -= 6;
+                        played.x -= 6;
+                        txSleep(1);
+                    }
+                }
+            }
+        }
 
         txSleep(5);
 
-
-
         if(played.x + 61 > 699)
         {
+
             for(int i = 0; i < 100; i += 1)
             {
                 txBitBlt (txDC(), fonik.x, fonik.y, 4988, 1736, fonik.fon);
                 txTransparentBlt (txDC(), played.x, played.y, 61, 78, played.player, 0, 0, TX_WHITE);
+                txSetFillColor(RGB(77, 113, 23));
+                txSetColor(RGB(77, 113, 23));
+                txRectangle(played.x - 2, 411, played.x + 60, 430);
                 fonik.x -= 6;
                 played.x -= 6;
                 txSleep(1);
